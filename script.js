@@ -18,17 +18,17 @@ function remainder(a, b){
     return a%b;
 }
 
-function operate(operator, num1, num2){
+function operate(op, num1, num2){
     num1=+num1;
     num2=+num2;
     const display=document.querySelector(".display");
-    if(num2===0 && operator==="/"){
+    if(num2===0 && op==="/"){
         display.innerText="Pls don't";
         return;
     }
       
     let result;
-    switch(operator){
+    switch(op){
         case "+": result=add(num1, num2);
                 break;
         case "-": result=sub(num1, num2);
@@ -62,8 +62,9 @@ function input(e){
      operator=e.target.id;
     }
     else if(n1!=="" && operator!==""){
-        if(n2==="")
+        if(n2==="" && e.target.classList.value!=="delete")
           display(e, true);
+        if(e.target.classList.value!=="delete")
         n2=input.innerText;
     }
     else{
@@ -110,14 +111,16 @@ let n1="";
 let n2="";
 let operator="";
 
+const remove=document.querySelector(".delete");
+remove.addEventListener("click", backspace);
+
 const buttons=document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click", (e) => {display(e); input(e)}));
 const result=document.querySelector(".result");
 result.addEventListener("click", (e) => operate(operator, n1, n2));
 const clear=document.querySelector(".clear");
 clear.addEventListener("click", reset);
-const remove=document.querySelector(".delete");
-remove.addEventListener("click", backspace);
+
 
 
 
