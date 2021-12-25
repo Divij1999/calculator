@@ -1,0 +1,51 @@
+* {
+    padding:0px;
+    margin: 0px;
+}
+
+body {
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calc, .display, .buttons, .buttons div, .buttons button {
+    border: 1px solid black;
+}
+
+.calc {
+    height: 600px;
+    width: 500px;
+    padding: 20px;
+    display: flex;
+    flex-flow: column;
+    gap:10px;
+}
+
+.display {
+    flex: 1 1 1;
+    background-color: white;
+    text-align: right;
+    height: 80px;
+    font-size: 70px;
+}
+
+.buttons {
+    flex-grow: 4;
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+}
+
+.buttons div {
+    display: flex;
+    flex-grow: 1;
+    gap: 5px;
+}
+
+.buttons button {
+    flex: 1 1 0;
+    font-size: 30px;
+}
