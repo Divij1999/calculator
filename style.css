@@ -11,41 +11,53 @@ body {
     height: 100vh;
 }
 
-.calc, .display, .buttons, .buttons div, .buttons button {
-    border: 1px solid black;
-}
-
 .calc {
     height: 600px;
-    width: 500px;
-    padding: 20px;
+    width: 450px;
+    padding: 35px;
     display: flex;
     flex-flow: column;
-    gap:10px;
+    gap:30px;
+    background-color:rgb(47, 45, 45);
+    border-radius:10px;
 }
 
 .display {
     flex: 1 1 1;
     background-color: white;
     text-align: right;
-    height: 80px;
+    height: 70px;
     font-size: 70px;
+    font-family:'Courier New', Courier, monospace;
 }
 
 .buttons {
     flex-grow: 4;
     display: flex;
     flex-flow: column;
-    gap: 5px;
+    gap: 12px;
 }
 
 .buttons div {
     display: flex;
     flex-grow: 1;
-    gap: 5px;
+    gap: 15px;
 }
 
 .buttons button {
     flex: 1 1 0;
     font-size: 30px;
+    border-radius: 8px;
+    background-color: grey;
+    color: white;
+    border:1px solid grey;
+}
+
+.buttons button:hover {
+    background-color: rgb(110, 110, 110);
+    transform:scale(1.05, 1.05);
+}
+
+.buttons button:active {
+    transform:scale(0.95, 0.95);
 }

@@ -45,10 +45,11 @@ function operate(op, num1, num2){
     if(!Number.isInteger(result))
       result=result.toFixed(3);
     result=result.toString();
-    display.innerText=result;
+    display.innerText=result.substring(0, 9);;
     n1=result;
     n2="";
     operator="";
+    checkDecimal(display);
 }
 
 function input(e){
@@ -62,8 +63,6 @@ function input(e){
      operator=e.target.id;
     }
     else if(n1!=="" && operator!==""){
-        if(n2==="" && e.target.classList.value!=="delete")
-          display(e, true);
         if(e.target.classList.value!=="delete")
         n2=input.innerText;
     }
@@ -87,11 +86,24 @@ function backspace(e){
     display.innerText=display.innerText.slice(0,display.innerText.length-1);
 }
 
-function display(e, n2=false){
+function display(e){
     const display=document.querySelector(".display");
-    if(n2){
-        display.innerText="";
-    }
+    
+        if(n1!=="" && operator!==""){
+            if(n2==="" && e.target.classList.value!=="delete"){
+                display.innerText="";
+            }
+        }
+      
+        if(e.target.classList.value==="number"){
+            display.innerText+=e.target.id;
+        }
+        display.innerText=display.innerText.substring(0, 9);
+        checkDecimal(display);
+        
+}
+
+function checkDecimal(display){
     if(display.innerText.includes(".")){
         const disableDecimal=document.getElementById(".");
         disableDecimal.disabled=true;
@@ -100,11 +112,7 @@ function display(e, n2=false){
         const disableDecimal=document.getElementById(".");
         disableDecimal.disabled=false;
     }
-    if(e.target.classList.value==="number"){
-        display.innerText+=e.target.id;
-    }
-   
-    
+
 }
 
 let n1="";
